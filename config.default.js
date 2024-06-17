@@ -7,6 +7,7 @@ var path = require('path');
 var config = {
   // debug 为 true 时，用于本地调试
   debug: true,
+  debug_mail: true,
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
@@ -66,13 +67,13 @@ var config = {
 
   // 邮箱配置
   mail_opts: {
-    host: 'smtp.126.com',
-    port: 25,
+    host: 'smtp.163.com',
+    secure: true,
+    port: 465,
     auth: {
-      user: 'club@126.com',
+      user: 'club@163.com',
       pass: 'club'
-    },
-    ignoreTLS: true,
+    }
   },
 
   //weibo app key
@@ -97,15 +98,15 @@ var config = {
   // 下面两个配置都是文件上传的配置
 
   // 7牛的access信息，用于文件上传
-  qn_access: {
-    accessKey: 'your access key',
-    secretKey: 'your secret key',
-    bucket: 'your bucket name',
-    origin: 'http://your qiniu domain',
-    // 如果vps在国外，请使用 http://up.qiniug.com/ ，这是七牛的国际节点
-    // 如果在国内，此项请留空
-    uploadURL: 'http://xxxxxxxx',
-  },
+  //qn_access: {
+  //  accessKey: 'your access key',
+  //  secretKey: 'your secret key',
+  //  bucket: 'your bucket name',
+  //  origin: 'http://your qiniu domain',
+  //  // 如果vps在国外，请使用 http://up.qiniug.com/ ，这是七牛的国际节点
+  //  // 如果在国内，此项请留空
+  //  uploadURL: 'http://xxxxxxxx',
+  //},
 
   // 文件上传配置
   // 注：如果填写 qn_access，则会上传到 7牛，以下配置无效

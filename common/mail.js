@@ -4,7 +4,7 @@ var config        = require('../config');
 var util          = require('util');
 var logger = require('./logger');
 var transporter     = mailer.createTransport(smtpTransport(config.mail_opts));
-var SITE_ROOT_URL = 'http://' + config.host;
+var SITE_ROOT_URL = 'http://' + config.host + ':' + config.port;
 var async = require('async')
 
 /**
@@ -12,7 +12,7 @@ var async = require('async')
  * @param {Object} data 邮件对象
  */
 var sendMail = function (data) {
-  if (config.debug) {
+  if (!config.debug_mail && config.debug) {
     return;
   }
 
